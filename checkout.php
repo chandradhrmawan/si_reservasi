@@ -1,262 +1,249 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html>
-<head>
-<title>Bonfire a Ecommerce Category Flat Bootstarp Responsive Website Template | Checkout :: w3layouts</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
-<!-- Custom Theme files -->
-<!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
-<!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Bonfire Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--fonts-->
-<link href='http://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-<!--//fonts-->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-				<script type="text/javascript">
-					jQuery(document).ready(function($) {
-						$(".scroll").click(function(event){		
-							event.preventDefault();
-							$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-						});
-					});
-				</script>
-<script>$(document).ready(function(c) {
-	$('.alert-close').on('click', function(c){
-		$('.message').fadeOut('slow', function(c){
-	  		$('.message').remove();
-		});
-	});	  
-});
-</script>
-<script>$(document).ready(function(c) {
-	$('.alert-close1').on('click', function(c){
-		$('.message1').fadeOut('slow', function(c){
-	  		$('.message1').remove();
-		});
-	});	  
-});
-</script>				
-</head>
-<body>
-  <!--header-->
-	<div class="header">
-		<div class="header-top">
-			<div class="container">	
-			<div class="header-top-in">			
-				<div class="logo">
-					<a href="index.php"><img src="images/logo.png" alt=" " ></a>
-				</div>
-				<div class="header-in">
-					<ul class="icon1 sub-icon1">
-							<li  ><a href="wishlist.php">WISH LIST (0)</a> </li>
-							<li  ><a href="account.php">  MY ACCOUNT</a></li>
-							<li ><a href="#" > SHOPPING CART</a></li>
-							<li > <a href="checkout.php" >CHECKOUT</a> </li>	
-							<li><div class="cart">
-									<a href="#" class="cart-in"> </a>
-									<span> 0</span>
-								</div>
-								<ul class="sub-icon1 list">
-						  <h3>Recently added items(2)</h3>
-						  <div class="shopping_cart">
-							  <div class="cart_box">
-							   	 <div class="message">
-							   	     <div class="alert-close"> </div> 
-					                <div class="list_img"><img src="images/14.jpg" class="img-responsive" alt=""></div>
-								    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
-		                             $12.00</span></div>
-		                              <div class="clearfix"></div>
-	                              </div>
-	                            </div>
-	                            <div class="cart_box1">
-								  <div class="message1">
-							   	     <div class="alert-close1"> </div> 
-					                <div class="list_img"><img src="images/15.jpg" class="img-responsive" alt=""></div>
-								    <div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
-		                             $12.00</span></div>
-		                              <div class="clearfix"></div>
-	                              </div>
-	                            </div>
-	                        </div>
-	                        <div class="total">
-	                        	<div class="total_left">CartSubtotal : </div>
-	                        	<div class="total_right">$250.00</div>
-	                        	<div class="clearfix"> </div>
-	                        </div>
-                            <div class="login_buttons">
-							  <div class="check_button"><a href="checkout.php">Check out</a></div>
-							  <div class="clearfix"></div>
-						    </div>
-					      <div class="clearfix"></div>
-						</ul>
-							</li>
-						</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			</div>
-		</div>
-		<div class="header-bottom">
-		<div class="container">
-			<div class="h_menu4">
-				<a class="toggleMenu" href="#">Menu</a>
-				<ul class="nav">
-					<li class="active"><a href="index.php"><i> </i>Desktops</a></li>
-					<li ><a href="#" >Laptops & Notebooks</a>
-						<ul class="drop">
-							<li><a href="products.php">Sony(2)</a></li>
-							<li><a href="products.php">Android(4)</a></li>
-							<li><a href="products.php">Apple(7)</a></li>
-							<li><a href="products.php">Acer(53)</a></li>
-							<li><a href="products.php">HP(78)</a></li>
-							<li><a href="products.php">Intel(5)</a></li>
-						</ul>
-						</li> 						
-						<li><a href="products.php" >  Tablets</a></li>            
-						<li><a href="products.php" >Components</a></li>						  				 
-						<li><a href="products.php" >Software</a></li>
-						<li><a href="products.php" >Phones & PDAs </a></li>
-						<li><a href="products.php" >  Cameras  </a></li>
-						<li><a href="contact.php" >Contact </a></li>
-					
-				</ul>
-				<script type="text/javascript" src="js/nav.js"></script>
-			</div>
-		</div>
-		</div>
-		<div class="header-bottom-in">
-		<div class="container">
-		<div class="header-bottom-on">
-			<p class="wel"><a href="#">Welcome visitor you can login or create an account.</a></p>
-			<div class="header-can">
-				<ul class="social-in">
-						<li><a href="#"><i> </i></a></li>
-						<li><a href="#"><i class="facebook"> </i></a></li>
-						<li><a href="#"><i class="twitter"> </i></a></li>					
-						<li><a href="#"><i class="skype"> </i></a></li>
-					</ul>	
-					<div class="down-top">		
-						  <select class="in-drop">
-							  <option value="Dollars" class="in-of">Dollars</option>
-							  <option value="Euro" class="in-of">Euro</option>
-							  <option value="Yen" class="in-of">Yen</option>
-							</select>
-					 </div>
-					<div class="search">
-						<form>
-							<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
-							<input type="submit" value="">
-						</form>
+<?php include 'header.php'; ?>
+<?php
+if(!isset($_SESSION['id_user'])){
+	echo "<script> window.alert('Silahkan Login Terlebih Dahulu'); location.replace('login.php'); </script>";
+}
+
+if(!isset($_SESSION['id_sewa'])){
+	echo "<script> window.alert('Terjadi Kesalahan'); location.replace('products.php'); </script>";
+}
+
+$sql = mysql_query("SELECT * FROM tmp_detail_sewa,m_barang 
+	WHERE 
+	tmp_detail_sewa.id_barang = m_barang.id_barang
+	AND
+	tmp_detail_sewa.id_sewa = '$_SESSION[id_sewa]'")or die(mysql_error());
+
+$count = mysql_num_rows($sql);
+$sta = "";
+//$row = mysql_fetch_array($sql);
+if($count==0){
+	echo '<div class="container"><div class="check-out"><h4 class="title">Shopping cart is empty</h4>
+	<p class="cart">You have no items in your shopping cart.<br>Click<a href="products.php"> here</a> to shopping</p></div></div>';
+}else{
+
+?>
+<div class="container">
+	<div class="check-out">
+		<h2 class="account-in">Account</h2>
+		<div class="row">
+			<div class="col-sm-6">
+				<form action="" method="POST">
+					<div class="form-group">
+						<label>Kode Sewa</label>
+						<input type="text" name="id_sewa" class="form-control" id="id_sewa" value="<?php echo $_SESSION['id_sewa'] ?>">
 					</div>
-					<div class="clearfix"> </div>
+					<div class="form-group">
+						<label>Tanggal Sewa</label>
+						<input type="date" name="tgl_sewa" class="form-control">
+					</div>
+					<div class="form-group">
+						<label>Lama Sewa</label>
+						<input type="number" name="lama_sewa" class="form-control" id="datepicker">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default" type="submit" name="proses">Proses</button>
+					</div>
+				</form>
+				<?php
+				if(isset($_POST['proses'])){
+					/*echo "<pre>";
+					print_r($_POST);*/
+
+					$date_now = date('Y-m-d');
+					$lama_sewa = $_POST['lama_sewa'];
+					$tgl_sewa = $_POST['tgl_sewa'];
+
+					if(empty($tgl_sewa)){
+						echo "<script> alert('Tanggal Belum Di Isi'); location.replace('checkout.php') </script>";
+					}
+
+					if(empty($lama_sewa)){
+						echo "<script> alert('Lama Sewa Belum Di Isi'); location.replace('checkout.php') </script>";	
+					}
+
+					if(strtotime($tgl_sewa) <= strtotime($date_now)){
+						echo "<script> alert('Tanggal Salah'); location.replace('checkout.php') </script>";
+					}
+
+					$tgl_selesai = date('Y-m-d',strtotime($tgl_sewa.'+'.$lama_sewa.' day'));
+
+					$tgl_expired = date('Y-m-d',strtotime($tgl_sewa.'+1 day'));
+
+					$durasi_sewa = strtotime($tgl_selesai) - strtotime($tgl_sewa);
+
+					$durasi_sewa = ($durasi_sewa / (60 * 60 * 24));
+
+					if($durasi_sewa>7){
+						echo "<script> alert('Maksimal Sewa 7 Hari'); location.replace('checkout.php') </script>";	
+					}
+
+					if($durasi_sewa<2){
+						echo "<script> alert('Minimum Sewa 2 Hari'); location.replace('checkout.php') </script>";	
+					}
+
+					/*
+					echo "TANGGAL SELESAI : ".$tgl_selesai."<br>";
+					echo "DURASI SEWA : ".$durasi_sewa." HARI <br>";*/
+				}
+				?>
 			</div>
-			<div class="clearfix"></div>
 		</div>
+		<h4>Detail Transaksi</h4>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>Nama Barang</th>
+					<th>Jumlah Barang</th>
+					<th>Harga Per Hari</th>
+					<th>Sub Total</th>
+					<th>Hapus</th>
+				</tr>
+			</thead>
+			<?php
+			$total = 0;
+			$no=1;
+			if($count!=0){ ?>
+			<?php while($row = mysql_fetch_array($sql)){ ?>
+			<tr>
+				<form action="#" method="POST">
+					<input type="hidden" name="id_barang" value="<?php echo $row['id_barang']; ?>">
+					<td><?php echo $no++;?></td>
+					<td><?php echo $row['nama_barang']; ?></td>
+					<td><?php echo $row['jumlah']; ?></td>
+					<td>Rp. <?php echo number_format($row['harga_sewa']); ?></td>
+					<td>Rp. <?php echo number_format($row['harga_sewa']*$row['jumlah']); ?></td>
+					<td><center><button type="submit" name="hapus" class="btn btn-danger btn-sm"><li class="fa fa-trash"> Hapus</li></button></center></td>
+				</form>
+			</tr>
+			<?php
+			@$total = $total + ($row['harga_sewa']*$row['jumlah']);
+		}
+		?>
+		<tr>
+			<td colspan="4">Sub Total</td>
+			<td colspan="2">Rp. <?php echo number_format($total); ?> / Per Hari</td>
+		</tr>
+		<tr>
+			<td colspan="4">Lama Sewa</td>
+			<td colspan="2"><?php echo @$durasi_sewa ?> Hari</td>
+		</tr>
+		<tr>
+			<td colspan="4">Mulai Sewa</td>
+			<td colspan="2"><?php echo @date('d-m-Y',strtotime($tgl_sewa)); ?></td>
+		</tr>
+		<tr>
+			<td colspan="4">Tanggal Kembali</td>
+			<td colspan="2"><?php echo @date('d-m-Y',strtotime($tgl_selesai)); ?></td>
+		</tr>
+		<tr>
+			<td colspan="4">Total Bayar</td>
+			<td colspan="2">Rp. <?php echo number_format(@$total*@$durasi_sewa); ?></td>
+		</tr>
+
+		<?php
+	}else{
+		?>
+		<td class="invert" colspan="7"><h4><strong>Keranjang Kosong</strong></h4></td>
+		<?php } ?>
+
+	</table>
+
+	<?php
+	if(isset($_POST['hapus'])){
+		$id_barang = $_POST['id_barang'];
+		$delete = mysql_query("DELETE FROM tmp_detail_sewa WHERE id_barang = '$id_barang' AND id_sewa = '$_SESSION[id_sewa]'");
+		if($delete){
+			echo "<script> alert('Hapus Berhasil'); location.replace('checkout.php') </script>";	
+		}else{
+			echo "<script> alert('Hapus Gagal'); location.replace('checkout.php') </script>";
+		}	
+
+	}
+	?>
+	<h4>Daftar Bank Tersedia</h4>
+	<div class="row">
+		<div class="col-sm-6">
+			<table class="table table-bordered">
+				<tr>
+					<th>No</th>
+					<th>Nama Bank</th>
+					<th>Atas Nama</th>
+					<th>No Rekening</th>
+				</tr>
+				<?php 
+				$no=1;
+				$sql = mysql_query("SELECT * FROM m_bank");
+				while($row = mysql_fetch_array($sql)){
+					?>
+					<tr>
+						<td><?php echo $no; ?></td>
+						<td><?php echo $row['nama_bank']; ?></td>
+						<td><?php echo $row['atas_nama']; ?></td>
+						<td><?php echo $row['no_rek']; ?></td>
+					</tr>
+					<?php $no++; } ?>
+				</table>
+			</div>
+			<p>
+				<ul> - Maksimal Sewa 7 Hari</ul>
+				<ul> - Minimun Sewa 2 Hari</ul>
+				<ul> - Pemesanan Akan Dibatalkan Jika Tidak Konfirmasi Max 1x24 Jam</ul>
+				<ul> - Minimum Pembayaran Awal Adalah 50% Dari Harga Total</ul>
+				<ul> - Pesanan Akan Otomatis Dibatalkan Sistem Jika Tidak Di Bayar Pada <?php echo @$tgl_expired; ?></ul>
+
+			</p>
 		</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="check-out">
-    	    <h4 class="title">Shopping cart is empty</h4>
-    	    <p class="cart">You have no items in your shopping cart.<br>Click<a href="index.php"> here</a> to continue shopping</p>
-    	</div>
+		<form action="" method="POST">
+		<input type="hidden" name="tgl_expired" value="<?php echo @$tgl_expired; ?>">
+		<input type="hidden" name="id_sewa" value="<?php echo @$_SESSION['id_sewa'];; ?>">
+		<input type="hidden" name="id_user" value="<?php echo @$_SESSION['id_user']; ?>">
+		<input type="hidden" name="tgl_sewa" value="<?php echo @$tgl_sewa; ?>">
+		<input type="hidden" name="tgl_selesai" value="<?php echo @$tgl_selesai; ?>">
+		<input type="hidden" name="status_bayar" value="<?php echo '0'; ?>">
+		<input type="hidden" name="status_sewa" value="<?php echo '0'; ?>">
+		<input type="hidden" name="total_bayar" value="<?php echo @$total; ?>">
+		<input type="hidden" name="dp" value="<?php echo '0'; ?>">
+			<button class="btn btn-warning" type="submit" name="checkout"> <i class="fa fa-money"> Checkout </i></button>
+			<a href="products.php"><button type="button" class="btn btn-success"> <i class="fa fa-shopping-cart"> Lanjutkan Belanja</i></button></a>
+		</form>
+
+		<?php 
+			if(isset($_POST['checkout'])){
+				/*echo "<pre>";
+				print_r($_POST);*/
+
+				$id_sewa = $_POST['id_sewa'];
+				$id_user = $_POST['id_user'];
+				$tgl_sewa = $_POST['tgl_sewa'];
+				$tgl_selesai = $_POST['tgl_selesai'];
+				$tgl_expired = $_POST['tgl_expired'];
+				$status_bayar = $_POST['status_bayar'];
+				$status_sewa = $_POST['status_sewa'];
+				$total_bayar = $_POST['total_bayar'];
+
+				$dp = $_POST['dp'];
+
+				if(empty($_POST['tgl_expired'])){
+					echo "<script> alert('Silahkan Lengkap Data Terlebih Dahulu Sebelum Check'); location.replace('checkout.php') </script>";
+				}
+
+				//die();
+
+				$insert_detail = mysql_query("INSERT INTO detail_sewa SELECT * FROM tmp_detail_sewa WHERE id_sewa = '$id_sewa'")or die(mysql_error());
+
+				$insert_sewa = mysql_query("INSERT INTO sewa VALUES('$id_sewa','$id_user','$tgl_sewa','$tgl_selesai','$tgl_expired','$status_bayar','$status_sewa','$total_bayar','$dp')")or die(mysql_error());
+
+				$hapus_tmp_detail = mysql_query("DELETE FROM tmp_detail_sewa");
+
+				echo "<script> alert('Silahkan Lajutan Ke Menu Pembayaran'); location.replace('pembayaran.php') </script>";
+			}
+		?>
 
 	</div>
-		<!---->
-		<div class="footer">
-			<div class="footer-top">
-				<div class="container">
-					<div class="col-md-4 footer-in">
-						<h4><i> </i>Suspendisse sed</h4>
-						<p>Aliquam dignissim porttitor tortor non fermentum. Curabitur in magna lectus. Duis sed eros diam. Lorem ipsum dolor sit amet, consectetur.</p>
-					</div>
-					<div class="col-md-4 footer-in">
-						<h4><i class="cross"> </i>Suspendisse sed</h4>
-						<p>Aliquam dignissim porttitor tortor non fermentum. Curabitur in magna lectus. Duis sed eros diam. Lorem ipsum dolor sit amet, consectetur.</p>
-					</div>
-					<div class="col-md-4 footer-in">
-						<h4><i class="down"> </i>Suspendisse sed</h4>
-						<p>Aliquam dignissim porttitor tortor non fermentum. Curabitur in magna lectus. Duis sed eros diam. Lorem ipsum dolor sit amet, consectetur.</p>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<!---->
-			<div class="footer-middle">
-				<div class="container">
-					<div class="footer-middle-in">
-						<h6>About us</h6>
-						<p>Suspendisse sed accumsan risus. Curabitur rhoncus, elit vel tincidunt elementum, nunc urna tristique nisi, in interdum libero magna tristique ante. adipiscing varius. Vestibulum dolor lorem.</p>
-					</div>
-					<div class="footer-middle-in">
-						<h6>Information</h6>
-						<ul>
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Delivery Information</a></li>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Terms & Conditions</a></li>
-						</ul>
-					</div>
-					<div class="footer-middle-in">
-						<h6>Customer Service</h6>
-						<ul>
-							<li><a href="contact.php">Contact Us</a></li>
-							<li><a href="#">Returns</a></li>
-							<li><a href="#">Site Map</a></li>
-						</ul>
-					</div>
-					<div class="footer-middle-in">
-						<h6>My Account</h6>
-						<ul>
-							<li><a href="account.php">My Account</a></li>
-							<li><a href="#">Order History</a></li>
-							<li><a href="wishlist.php">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
-						</ul>
-					</div>
-					<div class="footer-middle-in">
-						<h6>Extras</h6>
-						<ul>
-							<li><a href="#">Brands</a></li>
-							<li><a href="#">Gift Vouchers</a></li>
-							<li><a href="#">Affiliates</a></li>
-							<li><a href="#">Specials</a></li>
-						</ul>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<p class="footer-class">Copyright © 2015 Bonfire Template by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-			<script type="text/javascript">
-						$(document).ready(function() {
-							/*
-							var defaults = {
-					  			containerID: 'toTop', // fading element id
-								containerHoverID: 'toTopHover', // fading element hover id
-								scrollSpeed: 1200,
-								easingType: 'linear' 
-					 		};
-							*/
-							
-							$().UItoTop({ easingType: 'easeOutQuart' });
-							
-						});
-					</script>
-				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
-		</div>
-</body>
-</html>
+</div>
+<?php } ?>
+<!---->
+<?php include 'footer.php'; ?>

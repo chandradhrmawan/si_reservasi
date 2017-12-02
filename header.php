@@ -27,6 +27,7 @@ include 'config.php';
 	<!--fonts-->
 	<link href='http://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<!--//fonts-->
+	<link rel="stylesheet" href="fa/css/font-awesome.min.css">
 	<script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript">
@@ -109,42 +110,8 @@ include 'config.php';
 							<li ><a href="#" > SHOPPING CART</a></li>
 							<li > <a href="checkout.php" >CHECKOUT</a> </li>	
 							<li><div class="cart">
-								<a href="#" class="cart-in"> </a>
-								<span> 0</span>
+								<a href="checkout.php" class="cart-in"> </a>
 							</div>
-							<ul class="sub-icon1 list">
-								<h3>Recently added items(2)</h3>
-								<div class="shopping_cart">
-									<div class="cart_box">
-										<div class="message">
-											<div class="alert-close"> </div> 
-											<div class="list_img"><img src="images/14.jpg" class="img-responsive" alt=""></div>
-											<div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
-											$12.00</span></div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-									<div class="cart_box1">
-										<div class="message1">
-											<div class="alert-close1"> </div> 
-											<div class="list_img"><img src="images/15.jpg" class="img-responsive" alt=""></div>
-											<div class="list_desc"><h4><a href="#">velit esse molestie</a></h4>1 x<span class="actual">
-											$12.00</span></div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-								</div>
-								<div class="total">
-									<div class="total_left">CartSubtotal : </div>
-									<div class="total_right">$250.00</div>
-									<div class="clearfix"> </div>
-								</div>
-								<div class="login_buttons">
-									<div class="check_button"><a href="checkout.php">Check out</a></div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="clearfix"></div>
-							</ul>
 						</li>
 					</ul>
 				</div>
@@ -155,8 +122,11 @@ include 'config.php';
 	<?php
 		if(empty($_SESSION['id_user'])){
 			$view_login = "<li><a href='login.php' >Login / Sign Up </a></li>";
+			$view_login_stat = '<p class="wel"><a href="#">Welcome visitor you can login or create an account.</a></p>';
 		}else{
-			$view_login = "<li><a href='logout.php' >logout</a></li>";
+			$view_login = "<li><a href='pembayaran.php' >Pembayaran </a></li>
+							<li><a href='logout.php' >logout</a></li>";
+			$view_login_stat = '';
 		}
 	?>
 	<div class="header-bottom">
@@ -164,11 +134,13 @@ include 'config.php';
 			<div class="h_menu4">
 				<a class="toggleMenu" href="#">Menu</a>
 				<ul class="nav">
-					<li class="active"><a href="index.php"><i> </i>Desktops</a></li>
-					<li ><a href="#" >Laptops & Notebooks</a></li> 						
-					<li><a href="products.php" >  Tablets</a></li>            
-					<li><a href="products.php" >Components</a></li>						  				 
-					<li><a href="products.php" >Software</a></li>
+					<li class="active"><a href="index.php"><i> </i>HOME</a></li>
+					<li><a href="products.php?id_kategori=1" >TENDA</a></li> 						
+					<li><a href="products.php?id_kategori=2" >JAKET</a></li>            
+					<li><a href="products.php?id_kategori=3" >SEPATU</a></li>						  				 
+					<li><a href="products.php?id_kategori=4" >KOMPOR</a></li>
+					<li><a href="products.php?id_kategori=5" >PERIPHERAL</a></li>
+					<li><a href="products.php" >SEMUA</a></li>
 					<li><a href="contact.php" >Contact </a></li>
 					<?php echo  $view_login; ?>
 				</ul>
@@ -179,7 +151,7 @@ include 'config.php';
 	<div class="header-bottom-in">
 		<div class="container">
 			<div class="header-bottom-on">
-				<p class="wel"><a href="#">Welcome visitor you can login or create an account.</a></p>
+				<?php echo $view_login_stat; ?>
 				<div class="header-can">
 					<ul class="social-in">
 						<li><a href="#"><i> </i></a></li>
@@ -187,13 +159,7 @@ include 'config.php';
 						<li><a href="#"><i class="twitter"> </i></a></li>					
 						<li><a href="#"><i class="skype"> </i></a></li>
 					</ul>	
-					<div class="down-top">		
-						<select class="in-drop">
-							<option value="Dollars" class="in-of">Dollars</option>
-							<option value="Euro" class="in-of">Euro</option>
-							<option value="Yen" class="in-of">Yen</option>
-						</select>
-					</div>
+					
 					<div class="search">
 						<form>
 							<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" >
