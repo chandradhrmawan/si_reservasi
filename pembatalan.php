@@ -1,7 +1,9 @@
 <?php include 'header.php'; ?>
 <!---->
 <?php
-$sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id_user]' AND sewa.id_user = m_user.id_user");
+$sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id_user]' 
+					AND sewa.id_user = m_user.id_user 
+					AND sewa.status_sewa in (2,4)");
 ?>
 <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
 <script type="text/javascript" charset="utf-8">
@@ -20,12 +22,11 @@ $sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id
 					<th>Nama User</th>
 					<th>Tgl Sewa</th>
 					<th>Tgl Selesai</th>
-					<th>tgl Kadaluarsa</th>
 					<th>Status Bayar</th>
 					<th>Status Sewa</th>
 					<th>Total Bayar</th>
 					<th>Dp</th>
-					<th>Action</th>
+					<th style="text-align: center;">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -57,6 +58,7 @@ $sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id
 					}else if($row['status_sewa']==4){
 						$status_sewa = '<span class="label label-success"> Di Perpanjang </span>';
 					}
+
 					?>
 					<tr>
 						<form action="proses_bayar.php" method="POST">
@@ -66,13 +68,13 @@ $sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id
 							<td><?php echo $row['nama_user']; ?></td>
 							<td><?php echo date('d/m/Y',strtotime($row['tgl_sewa'])); ?></td>
 							<td><?php echo date('d/m/Y',strtotime($row['tgl_selesai'])); ?></td>
-							<td><?php echo date('d/m/Y',strtotime($row['tgl_expired'])); ?></td>
 							<td><?php echo $status_bayar; ?></td>
 							<td><?php echo $status_sewa; ?></td>
 							<td>Rp. <?php echo number_format($row['total_bayar']); ?></td>
 							<td>Rp. <?php echo number_format($row['dp']); ?></td>
 							<td>
-								<button type="submit" name="bayar" class="btn btn-sm btn-default" <?php echo $tombol; ?>><i class="fa fa-money"> Bayar DP </i></button>
+								<a href="form_pembatalan.php?id_sewa=<?php echo $row['id_sewa']; ?>" title="Form Pembatalan" disabled><button type="button" name="batal" class="btn btn-sm btn-default" disabled="disabled"><i class="fa fa-trash"> Pembatalan </i></button> </a>
+								<a href="form_perpanjangan.php?id_sewa=<?php echo $row['id_sewa']; ?>" title="Form Perpanjangan"><button type="button" name="perpanjang" class="btn btn-sm btn-default"><i class="fa fa-check"> Perpanjangan </i></button></a>
 							</td>
 						</form>
 					</tr>
@@ -89,4 +91,5 @@ $sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id
 </div>
 <div class="clearfix"> </div>
 <!---->
-<?php include 'footer.php'; ?> 
+<?php include 'footer.php'; ?>
+

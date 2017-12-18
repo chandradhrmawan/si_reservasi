@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 02 Des 2017 pada 17.51
+-- Generation Time: 18 Des 2017 pada 16.45
 -- Versi Server: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `detail_sewa` (
-  `id_detail` int(11) NOT NULL,
+  `id_detail` int(11) DEFAULT NULL,
   `id_sewa` varchar(255) DEFAULT NULL,
   `id_barang` varchar(255) DEFAULT NULL,
   `jumlah` int(11) DEFAULT NULL,
@@ -39,12 +39,17 @@ CREATE TABLE IF NOT EXISTS `detail_sewa` (
 --
 
 INSERT INTO `detail_sewa` (`id_detail`, `id_sewa`, `id_barang`, `jumlah`, `status_pinjam`) VALUES
+(1, 'SW005101217', '3', 2, '1'),
 (3, 'SW003021217', '3', 1, '0'),
 (4, 'SW003021217', '7', 2, '0'),
 (5, 'SW004021217', '1', 4, '0'),
-(16, 'SW001011217', '1', 2, '1'),
+(16, 'SW001011217', '1', 2, '0'),
 (17, 'SW001011217', '4', 1, '1'),
-(18, 'SW002011217', '1', 1, '0');
+(18, 'SW002011217', '1', 1, '0'),
+(2, 'SW006151217', '3', 4, '1'),
+(3, 'SW006151217', '4', 1, '1'),
+(4, 'SW007101217', '4', 8, '0'),
+(5, 'SW007101217', '3', 2, '0');
 
 -- --------------------------------------------------------
 
@@ -29169,10 +29174,10 @@ CREATE TABLE IF NOT EXISTS `m_barang` (
 --
 
 INSERT INTO `m_barang` (`id_barang`, `nama_barang`, `tgl_ditambakan`, `id_merk`, `id_kategori`, `id_warna`, `id_ukuran`, `deskripsi`, `harga_sewa`, `harga_beli`, `stok`, `status`, `foto`) VALUES
-(1, 'Tenda Dome Kap 4', '2017-12-01 15:46:05', 1, 1, 1, 1, 'Tenda Dome Kapasitas 4 Orang', 25000, '1500000', 14, 1, 'B00007.jpg'),
+(1, 'Tenda Dome Kap 4', '2017-12-01 15:46:05', 1, 1, 1, 1, 'Tenda Dome Kapasitas 4 Orang', 25000, '1500000', 16, 1, 'B00007.jpg'),
 (2, 'Jacket Eiger', '2017-12-01 12:55:27', 1, 3, 1, 1, 'Deskripsi Barang', 10000, '1500000', 10, 1, 'B00011.jpg'),
-(3, '1', '2017-12-01 15:06:35', 1, 1, 1, 1, 'Deskripsi Barang', 1, '1', 14, 1, 'B00008.jpg'),
-(4, '2', '2017-12-01 15:06:45', 1, 1, 1, 1, 'Deskripsi Barang', 2, '2', 9, 1, 'B00024.jpg'),
+(3, 'JAKET', '2017-12-01 15:06:35', 1, 1, 1, 1, 'Deskripsi Barang', 5000, '10000', 8, 1, 'B00008.jpg'),
+(4, 'KACAMATAN', '2017-12-01 15:06:45', 1, 1, 1, 1, 'Deskripsi Barang', 5000, '10000', 8, 1, 'B00024.jpg'),
 (5, '5', '2017-12-01 15:07:03', 1, 1, 1, 1, 'Deskripsi Barang', 5, '5', 10, 1, 'B00026.jpg'),
 (6, '6', '2017-12-01 15:07:16', 1, 1, 1, 1, 'Deskripsi Barang', 6, '6', 10, 1, 'B00028.jpg'),
 (7, '7', '2017-12-01 15:07:27', 1, 1, 1, 1, 'Deskripsi Barang', 7, '7', 14, 1, 'B00013.jpg'),
@@ -29318,7 +29323,10 @@ CREATE TABLE IF NOT EXISTS `pembayaran_awal` (
 INSERT INTO `pembayaran_awal` (`id_pembayaran`, `id_sewa`, `tgl_pembayaran`, `id_bank`, `bank_pengirim`, `no_rek_pengirim`, `atas_nama_pengirim`, `jumlah_transfer`, `bukti_transfer`, `catatan`) VALUES
 ('DP001021217', 'SW001011217', '2017-12-02 08:24:19', 1, 'BNN', '1232323', 'ASDA', 25001, 'B00004.jpg', 'AA'),
 ('DP002021217', 'SW003021217', '2017-12-02 17:38:34', 1, 'BNN', '1232323', 'ASDA', 8, 'default-50x50.gif', 'aa'),
-('DP003021217', 'SW004021217', '2017-12-02 17:47:35', 2, 'BNN', '1232323', '123', 50000, 'B00027.jpg', 'SSS');
+('DP003021217', 'SW004021217', '2017-12-02 17:47:35', 2, 'BNN', '1232323', '123', 50000, 'B00027.jpg', 'SSS'),
+('DP004101217', 'SW005101217', '2017-12-10 10:20:33', 1, '123', '123', '123', 1, 'check.png', 'a'),
+('DP005101217', 'SW007101217', '2017-12-10 10:39:15', 2, '11', '11', '11', 25000, '24.jpg', '123'),
+('DP006181217', 'SW006151217', '2017-12-18 10:42:10', 2, 'aa', '123', '2323', 12500, '15.jpg', 'aaaa');
 
 -- --------------------------------------------------------
 
@@ -29340,7 +29348,30 @@ CREATE TABLE IF NOT EXISTS `pengembalian` (
 INSERT INTO `pengembalian` (`id_pengembalian`, `tgl_pengembalian`, `id_user`, `id_sewa`) VALUES
 ('PN001021217', '2017-12-02 17:28:03', '1', 'SW002011217'),
 ('PN002021217', '2017-12-02 17:41:57', '1', 'SW003021217'),
-('PN003021217', '2017-12-02 17:48:23', '1', 'SW004021217');
+('PN003021217', '2017-12-02 17:48:23', '1', 'SW004021217'),
+('PN004101217', '2017-12-10 10:19:23', '1', 'SW001011217'),
+('PN005151217', '2017-12-15 10:33:23', '1', 'SW005101217'),
+('PN006181217', '2017-12-18 10:41:47', '1', 'SW007101217');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `perpanjangan`
+--
+
+CREATE TABLE IF NOT EXISTS `perpanjangan` (
+  `id_perpanjang` varchar(255) NOT NULL,
+  `id_sewa` varchar(255) DEFAULT NULL,
+  `lama_perpanjang` varchar(255) DEFAULT NULL,
+  `alasan_perpanjang` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `perpanjangan`
+--
+
+INSERT INTO `perpanjangan` (`id_perpanjang`, `id_sewa`, `lama_perpanjang`, `alasan_perpanjang`) VALUES
+('PP001181217', 'SW006151217', '2', 'Kurang Lama Disananya');
 
 -- --------------------------------------------------------
 
@@ -29514,10 +29545,13 @@ CREATE TABLE IF NOT EXISTS `sewa` (
 --
 
 INSERT INTO `sewa` (`id_sewa`, `id_user`, `tgl_sewa`, `tgl_selesai`, `tgl_expired`, `status_bayar`, `status_sewa`, `total_bayar`, `dp`) VALUES
-('SW001011217', 1, '2017-12-02', '2017-12-02', '2017-12-02', 2, 2, 50002, 0),
+('SW001011217', 1, '2017-12-02', '2017-12-02', '2017-12-02', 3, 3, 50002, 0),
 ('SW002011217', 1, '2017-12-02', '2017-12-02', '2017-12-02', 3, 3, 1750000, 0),
 ('SW003021217', 1, '2017-12-02', '2017-12-02', '2017-12-02', 3, 3, 15, 8),
-('SW004021217', 1, '2017-12-03', '2017-12-09', '2017-12-04', 3, 3, 100000, 50000);
+('SW004021217', 1, '2017-12-03', '2017-12-09', '2017-12-04', 3, 3, 100000, 50000),
+('SW005101217', 1, '2017-12-11', '2017-12-13', '2017-12-12', 3, 3, 2, 1),
+('SW006151217', 1, '2017-12-11', '2017-12-13', '0000-00-00', 2, 4, 25000, 12500),
+('SW007101217', 1, '2017-12-11', '2017-12-16', '2017-12-12', 3, 3, 50000, 25000);
 
 -- --------------------------------------------------------
 
@@ -29536,12 +29570,6 @@ CREATE TABLE IF NOT EXISTS `tmp_detail_sewa` (
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `detail_sewa`
---
-ALTER TABLE `detail_sewa`
-  ADD PRIMARY KEY (`id_detail`);
 
 --
 -- Indexes for table `m_admin`
@@ -29602,6 +29630,12 @@ ALTER TABLE `pembayaran_awal`
 --
 ALTER TABLE `pengembalian`
   ADD PRIMARY KEY (`id_pengembalian`);
+
+--
+-- Indexes for table `perpanjangan`
+--
+ALTER TABLE `perpanjangan`
+  ADD PRIMARY KEY (`id_perpanjang`);
 
 --
 -- Indexes for table `sewa`

@@ -42,8 +42,18 @@ $id_user = $row['id_user'];
             <tr>
               <td>Telat Sebanyak:</td>
               <?php
-              $telat_temp =  strtotime(date('Y-m-d') - strtotime($row['tgl_selesai']));
-              $lama_telat = ceil($telat_temp / (60 * 60 * 24));
+              $date_now=date_create(date('Y-m-d'));
+              $tanggal_selesai=date_create($row['tgl_selesai']);
+              $diff=date_diff($date_now,$tanggal_selesai);
+              $lama_telat_temp = $diff->format('%R%a');
+              $lama_telat_mark = substr($lama_telat_temp,0,1);
+              $lama_telat_day = substr($lama_telat_temp,1,2);
+
+              if($lama_telat_mark == '+'){
+                $lama_telat = 0;
+              }else{
+                $lama_telat = $lama_telat_day;
+              }
               ?>
               <td><strong><?php echo $lama_telat; ?> Hari</strong></td>
             </tr>
@@ -57,8 +67,10 @@ $id_user = $row['id_user'];
             <tr>
               <td>Lama Sewa:</td>
               <?php
-              $tgl_temp = strtotime($row['tgl_selesai']) - strtotime($row['tgl_sewa']);
-              $lama_sewa = ceil($tgl_temp / (60 * 60 * 24));
+              $tangal_sewa=date_create($row['tgl_sewa']);
+              $tanggal_selesai=date_create($row['tgl_selesai']);
+              $diff=date_diff($tangal_sewa,$tanggal_selesai);
+              $lama_sewa = $diff->format('%a'); 
               ?>
               <td><strong><?php echo $lama_sewa; ?> Hari</strong></td>
             </tr>
@@ -80,10 +92,12 @@ $id_user = $row['id_user'];
               <?php 
               $no=1;
               $tombol = '';
+              $sub_total = 0;
               $sql = mysql_query("SELECT * FROM detail_sewa,m_barang WHERE m_barang.id_barang = detail_sewa.id_barang AND id_sewa = '$id_sewa'")or die(mysql_error()); 
               while($r = mysql_fetch_array($sql)){
                 if($r['status_pinjam']==1){
                   $status = '<span class="label label-warning"> Belum Dikembalikan </span>';
+                  $tombol = '';
                 }else if($r['status_pinjam']==0){
                   $status = '<span class="label label-danger"> Sudah Dikembalikan </span>';
                   $tombol = 'disabled';
@@ -105,20 +119,21 @@ $id_user = $row['id_user'];
                     </td>
                   </tr>
                 </form>
-                <?php 
+                <?php
+                $sub_total = $sub_total + ($r['harga_sewa'] * $lama_sewa * $lama_telat);
                 $no++; 
               } ?>
               <tr>
                 <td colspan="4">Dp</td>
-                <td colspan="2"><?php echo number_format($row['dp']); ?></td>
+                <td colspan="2">Rp. <?php echo number_format($row['dp']); ?></td>
               </tr>
               <tr>
                 <td colspan="4">Total Bayar</td>
-                <td colspan="2"><?php echo number_format($row['total_bayar'] * $lama_telat); ?></td>
+                <td colspan="2">Rp. <?php echo number_format($sub_total); ?></td>
               </tr>
               <tr>
                 <td colspan="4">Sisa Bayar</td>
-                <td colspan="2"><?php echo number_format(($row['total_bayar'] - $row['dp']) * $lama_telat); ?></td>
+                <td colspan="2">Rp. <?php echo number_format(($sub_total - $row['dp'])); ?></td>
               </tr>
             </tbody>
           </table>
@@ -160,14 +175,14 @@ $id_user = $row['id_user'];
       $tgl_pengembalian = date('Y-m-d H:i:s');
 
       $insert = mysql_query("INSERT INTO pengembalian VALUES('$id_pengembalian',
-                            '$tgl_pengembalian',
-                            '$id_user',
-                            '$id_sewa')")or die(mysql_error());
+        '$tgl_pengembalian',
+        '$id_user',
+        '$id_sewa')")or die(mysql_error());
 
       $sql = mysql_query("UPDATE sewa SET status_bayar = '3',
-                                          status_sewa = '3'
-                                          WHERE
-                                          id_sewa = '$id_sewa'")or die(mysql_error());
+        status_sewa = '3'
+        WHERE
+        id_sewa = '$id_sewa'")or die(mysql_error());
       if($sql){
        echo "<script> alert('Pengembalian Berhasil'); location.replace('kelola_penyewaan.php') </script>";
      } 
@@ -183,7 +198,6 @@ $id_user = $row['id_user'];
     $update = mysql_query("UPDATE m_barang SET stok = stok + '$jumlah' WHERE id_barang = '$id_barang'")or die(mysql_error());
     $update_brg =  mysql_query("UPDATE detail_sewa SET status_pinjam = '0' WHERE id_sewa = '$id_sewa' AND id_barang = '$id_barang'")or die(mysql_error());
     if($update AND $update_brg){
-      $tombol = 'disabled';
       echo "<script> alert('berhasil kembalikan barang'); location.replace('pengembalian.php?id_sewa=$id_sewa') </script>";
     }
 

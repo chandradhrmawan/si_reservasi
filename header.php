@@ -125,6 +125,13 @@ include 'config.php';
 			$view_login_stat = '<p class="wel"><a href="#">Welcome visitor you can login or create an account.</a></p>';
 		}else{
 			$view_login = "<li><a href='pembayaran.php' >Pembayaran </a></li>
+							<li ><a href='#' >Pembatalan / Perpanjang</a>
+						<ul class='drop'>
+							<li><a href='pembatalan.php'>Pembatalan</a></li>
+							<li><a href='perpanjang.php'>perpanjangan</a></li>
+							
+						</ul>
+						</li>
 							<li><a href='logout.php' >logout</a></li>";
 			$view_login_stat = '';
 		}
