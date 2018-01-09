@@ -151,10 +151,7 @@ $id_user = $row['id_user'];
                 if($jumlah != 0){
                   $dis_app = 'disabled';
                 }
-                
-                /*echo "<pre>";
-                echo $jumlah;
-                echo "</pre>";*/
+              
                 
                 ?>
                 <button type="submit" <?php echo $dis_app; ?> name="selesai" class="btn btn-primary btn-flat">
