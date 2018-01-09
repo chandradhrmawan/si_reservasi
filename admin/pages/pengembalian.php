@@ -143,7 +143,21 @@ $id_user = $row['id_user'];
             <!-- <a href="kelola_penyewaan.php">
               <button type="button" class="btn btn-default btn-flat">
                 <i class="fa fa-arrow-left"></i> Kembali</button></a> -->
-                <button type="submit" name="selesai" class="btn btn-primary btn-flat">
+                <?php
+                $dis_app = '';
+                $sql = mysql_query("SELECT * FROM detail_sewa,m_barang WHERE m_barang.id_barang = detail_sewa.id_barang AND id_sewa = '$id_sewa'
+                  AND detail_sewa.status_pinjam = '1'")or die(mysql_error());
+                $jumlah = mysql_num_rows($sql);
+                if($jumlah != 0){
+                  $dis_app = 'disabled';
+                }
+                
+                /*echo "<pre>";
+                echo $jumlah;
+                echo "</pre>";*/
+                
+                ?>
+                <button type="submit" <?php echo $dis_app; ?> name="selesai" class="btn btn-primary btn-flat">
                   <i class="fa fa-arrow-left"></i> Selesai</button>
                 </form>
               </div>
