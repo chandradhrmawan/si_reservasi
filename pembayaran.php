@@ -55,7 +55,13 @@ $sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id
 					}else if($row['status_sewa']==3){
 						$status_sewa = '<span class="label label-success"> Selesai </span>';
 					}else if($row['status_sewa']==4){
-						$status_sewa = '<span class="label label-success"> Di Perpanjang </span>';
+						$status_sewa = '<span class="label label-info"> Proses Perpanjang </span>';
+					}else if($row['status_sewa']==5){
+						$status_sewa = '<span class="label label-success"> Penyewaan Di Perpanjang </span>';
+					}else if($row['status_sewa']==7){
+						$status_sewa = '<span class="label label-warning"> Proses Pembatalan </span>';
+					}else if($row['status_sewa']==12){
+						$status_sewa = '<span class="label label-danger"> Penyewaan Dibatalkan </span>';
 					}
 					?>
 					<tr>

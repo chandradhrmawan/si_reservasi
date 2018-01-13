@@ -2,7 +2,8 @@
   <ul>
     <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li> <a href="kelola_penyewaan.php"><i class="icon icon-retweet"></i> <span>Penyewaan</span></a> </li>
-    <li> <a href="kelola_pengembalian.php"><i class="icon icon-check"></i> <span>Pengembalian</span></a> </li>
+    <li> <a href="kelola_pembatalan.php"><i class="icon icon-check"></i> <span>Pembatalan</span></a> </li>
+     <li> <a href="kelola_perpanjangan.php"><i class="icon icon-edit"></i> <span>Perpanjangan</span></a> </li>
     <li> <a href="kelola_user.php"><i class="icon icon-user"></i> <span>Master User</span></a> </li>
     <li> <a href="kelola_admin.php"><i class="icon icon-user"></i> <span>Master Admin</span></a> </li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Master Barang</span> 

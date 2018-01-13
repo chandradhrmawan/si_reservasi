@@ -3,7 +3,7 @@
 <?php
 $sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id_user]' 
 	AND sewa.id_user = m_user.id_user 
-	AND sewa.status_sewa in (2,7,12)");
+	AND sewa.status_sewa in (2,4,5)");
 
 
 	?>
@@ -33,20 +33,19 @@ $sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id
 					$no=1;
 					$tombol = '';
 					while($row = mysql_fetch_array($sql)){ 
-					$link = 'form_pembatalan.php?id_sewa=<?php echo $row[id_sewa]; ?>';
-
+					$link = "form_perpanjang.php?id_sewa=$row[id_sewa]";
 						if($row['status_sewa']==0){
 							$status_sewa = '<span class="label label-warning"> Belum Sewa </span>';
 						}else if($row['status_sewa']==2){
 							$status_sewa = '<span class="label label-success"> Sedang Di Sewa </span>';
-						}else if($row['status_sewa']==7){
+						}else if($row['status_sewa']==4){
 							$link = "";
 							$tombol = 'disabled';
-							$status_sewa = '<span class="label label-warning"> Proses Pembatalan </span>';
-						}else if($row['status_sewa']==12){
+							$status_sewa = '<span class="label label-warning"> Proses Perpanjang </span>';
+						}else if($row['status_sewa']==5){
 							$link = "";
 							$tombol = 'disabled';
-							$status_sewa = '<span class="label label-danger"> Penyewaan Dibatalkan </span>';
+							$status_sewa = '<span class="label label-danger"> Diperpanjang </span>';
 						}
 
 						?>
@@ -60,7 +59,7 @@ $sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = '$_SESSION[id
 								<td><?php echo date('d/m/Y',strtotime($row['tgl_selesai'])); ?></td>
 								<td><?php echo $status_sewa; ?></td>
 								<td>
-									<center><a href="<?php echo $link ?>" title="Form Pembatalan" disabled><button type="button" name="batal" <?php echo $tombol; ?> class="btn btn-sm btn-default"><i class="fa fa-trash"> Pembatalan </i></button> </a></center>
+									<center><a href="<?php echo $link ?>" title="Form Perpanjang" disabled><button type="button" name="batal" <?php echo $tombol; ?> class="btn btn-sm btn-default"><i class="fa fa-check"> Perpanjang </i></button> </a></center>
 								</td>
 							</form>
 						</tr>

@@ -96,6 +96,20 @@ include 'config.php';
 </head>
 <body>
 	<!--header-->
+
+	<?php
+	if(empty($_SESSION['id_user'])){
+		$view_login = "<li><a href='login.php' >Login / Sign Up </a></li>";
+		$view_login_stat = '<p class="wel"><a href="#">Welcome visitor you can login or create an account.</a></p>';
+
+	}else{
+		$view_login = "<li><a href='pembayaran.php' >Pembayaran </a></li>
+		<li><a href='pembatalan.php'>Pembatalan</a></li>
+		<li><a href='perpanjang.php'>perpanjangan</a></li>
+		<li><a href='logout.php' >logout</a></li>";
+		$view_login_stat = '';
+	}
+	?>
 	<div class="header">
 		<div class="header-top">
 			<div class="container">	
@@ -104,10 +118,7 @@ include 'config.php';
 						<a href="index.php"><img src="images/logo.png" alt=" " ></a>
 					</div>
 					<div class="header-in">
-						<ul class="icon1 sub-icon1">
-							<li  ><a href="wishlist.php">WISH LIST (0)</a> </li>
-							<li  ><a href="account.php">  MY ACCOUNT</a></li>
-							<li ><a href="#" > SHOPPING CART</a></li>
+						<ul class="icon1 sub-icon1"><?php echo $view_login; ?>
 							<li > <a href="checkout.php" >CHECKOUT</a> </li>	
 							<li><div class="cart">
 								<a href="checkout.php" class="cart-in"> </a>
@@ -119,23 +130,7 @@ include 'config.php';
 			</div>
 		</div>
 	</div>
-	<?php
-		if(empty($_SESSION['id_user'])){
-			$view_login = "<li><a href='login.php' >Login / Sign Up </a></li>";
-			$view_login_stat = '<p class="wel"><a href="#">Welcome visitor you can login or create an account.</a></p>';
-		}else{
-			$view_login = "<li><a href='pembayaran.php' >Pembayaran </a></li>
-							<li ><a href='#' >Pembatalan / Perpanjang</a>
-						<ul class='drop'>
-							<li><a href='pembatalan.php'>Pembatalan</a></li>
-							<li><a href='perpanjang.php'>perpanjangan</a></li>
-							
-						</ul>
-						</li>
-							<li><a href='logout.php' >logout</a></li>";
-			$view_login_stat = '';
-		}
-	?>
+	
 	<div class="header-bottom">
 		<div class="container">
 			<div class="h_menu4">

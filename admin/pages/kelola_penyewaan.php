@@ -33,7 +33,7 @@
 							$no=1;
 							$dis_pengembalian = '';
 							$stat = '';
-							$sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = m_user.id_user"); 
+							$sql = mysql_query("SELECT * FROM sewa,m_user WHERE sewa.id_user = m_user.id_user ORDER BY sewa.id_sewa DESC"); 
 							while($row = mysql_fetch_array($sql)){
 								if($row['status_bayar']==0){
 									$status_bayar = '<span class="label label-warning"> Belum Lunas </span>';
@@ -65,6 +65,19 @@
 									$stat = '';
 									$dis_pengembalian = 'disabled';
 									$status_sewa = '<span class="label label-success"> Selesai </span>';
+								}else if($row['status_sewa']==4){
+									$status_sewa = '<span class="label label-info"> Proses Perpanjang </span>';
+								}else if($row['status_sewa']==5){
+									$stat = 'pengembalian.php?id_sewa='.$row['id_sewa'].'';
+									$status_sewa = '<span class="label label-success"> Penyewaan Di Perpanjang </span>';
+								}else if($row['status_sewa']==7){
+									$stat = '';
+									$dis_pengembalian = 'disabled';
+									$status_sewa = '<span class="label label-warning"> Proses Pembatalan </span>';
+								}else if($row['status_sewa']==12){
+									$stat = '';
+									$dis_pengembalian = 'disabled';
+									$status_sewa = '<span class="label label-danger"> Penyewaan Dibatalkan </span>';
 								}
 								?>
 								<tr>
