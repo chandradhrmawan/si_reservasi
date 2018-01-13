@@ -112,6 +112,12 @@ $r = mysql_fetch_array($sql);
                     </div>
                   </div>
                   <div class="control-group">
+                    <label class="control-label">Stok:</label>
+                    <div class="controls">
+                      <input type="number" class="span4" name="stok" value="<?php echo $r['stok'] ?>" placeholder="stok" />
+                    </div>
+                  </div>
+                  <div class="control-group">
                     <label class="control-label">Foto :</label>
                     <div class="controls">
                       <input type="file" class="span4" name="foto" value="" />
@@ -179,6 +185,7 @@ $r = mysql_fetch_array($sql);
     $deskripsi = $_POST['deskripsi'];
     $harga_sewa = $_POST['harga_sewa'];
     $harga_beli = $_POST['harga_beli'];
+    $stok = $_POST['stok'];
 
       $update = mysql_query("UPDATE m_barang SET
                                    nama_barang = '$nama_barang',
@@ -189,6 +196,7 @@ $r = mysql_fetch_array($sql);
                                    deskripsi = '$deskripsi',
                                    harga_sewa = '$harga_sewa',
                                    harga_beli = '$harga_beli',
+                                   stok = '$stok',
                                    foto = '$foto'
                                    WHERE id_barang = '$id_barang'")or die(mysql_error());
       if($update){
