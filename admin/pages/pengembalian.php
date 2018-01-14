@@ -28,15 +28,15 @@ $id_user = $row['id_user'];
             </tr>
             <tr>
               <td>Tanggal Sewa:</td>
-              <td><strong><?php echo date('d-m-Y',strtotime($row['tgl_sewa'])); ?></strong></td>
+              <td><strong><?php echo date('d-F-Y',strtotime($row['tgl_sewa'])); ?></strong></td>
             </tr>
             <tr>
               <td>Tanggal Selesai:</td>
-              <td><strong><?php echo date('d-m-Y',strtotime($row['tgl_selesai'])); ?></strong></td>
+              <td><strong><?php echo date('d-F-Y',strtotime($row['tgl_selesai'])); ?></strong></td>
             </tr>
             <tr>
               <td>Tanggal Kembali:</td>
-              <td><strong><?php echo date('d-m-Y'); ?></strong></td>
+              <td><strong><?php echo date('d-F-Y'); ?></strong></td>
             </tr>
 
             <tr>
@@ -93,6 +93,7 @@ $id_user = $row['id_user'];
               $no=1;
               $tombol = '';
               $sub_total = 0;
+              $sub_total_temp = 0;
               $sql = mysql_query("SELECT * FROM detail_sewa,m_barang WHERE m_barang.id_barang = detail_sewa.id_barang AND id_sewa = '$id_sewa'")or die(mysql_error()); 
               while($r = mysql_fetch_array($sql)){
                 if($r['status_pinjam']==1){
@@ -120,9 +121,14 @@ $id_user = $row['id_user'];
                   </tr>
                 </form>
                 <?php
+                $sub_total_temp = $sub_total_temp + ($r['harga_sewa'] * $lama_sewa);
                 $sub_total = $sub_total + ($r['harga_sewa'] * $lama_sewa * $lama_telat);
                 $no++; 
               } ?>
+              <tr>
+                <td colspan="4">Denda</td>
+                <td colspan="2">Rp. <?php echo number_format($sub_total_temp); ?></td>
+              </tr>
               <tr>
                 <td colspan="4">Dp</td>
                 <td colspan="2">Rp. <?php echo number_format($row['dp']); ?></td>
@@ -151,67 +157,69 @@ $id_user = $row['id_user'];
                 if($jumlah != 0){
                   $dis_app = 'disabled';
                 }
-              
+
                 
                 ?>
                 <button type="submit" <?php echo $dis_app; ?> name="selesai" class="btn btn-primary btn-flat">
                   <i class="fa fa-arrow-left"></i> Selesai</button>
-                </form>
+                  <a href="kelola_penyewaan.php"><button type="button" name="balik" class="btn btn-danger btn-flat">
+                    <i class="fa fa-arrow-left"></i> Kembali</button></a>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <?php include 'footer.php'; ?>
-      <?php
-      if(isset($_POST['selesai'])){
+        <?php include 'footer.php'; ?>
+        <?php
+        if(isset($_POST['selesai'])){
 
-       $id_sewa = $_POST['id_sewa'];
-       $id_user = $_POST['id_user'];
+         $id_sewa = $_POST['id_sewa'];
+         $id_user = $_POST['id_user'];
 
-       $hariini = date('dmy');
-       @$kodeawal = mysql_fetch_array(mysql_query("SELECT MAX(id_pengembalian) from pengembalian"));
-       $kode = substr($kodeawal[0], 2,3);
-       $carikode = mysql_query("select max('$kode') from pengembalian") or die (mysql_error());
-       $datakode = mysql_fetch_array($carikode);
-       if ($datakode) {
-        $nilaikode = substr($datakode[0], 1);
-        $kode = (int) $nilaikode;
-        $kode = $kode + 1;
-        $id_pengembalian = "PN".str_pad($kode, 3, "0", STR_PAD_LEFT).$hariini;
-      } else {
-        $id_pengembalian = "PN001".$hariini;
+         $hariini = date('dmy');
+         @$kodeawal = mysql_fetch_array(mysql_query("SELECT MAX(id_pengembalian) from pengembalian"));
+         $kode = substr($kodeawal[0], 2,3);
+         $carikode = mysql_query("select max('$kode') from pengembalian") or die (mysql_error());
+         $datakode = mysql_fetch_array($carikode);
+         if ($datakode) {
+          $nilaikode = substr($datakode[0], 1);
+          $kode = (int) $nilaikode;
+          $kode = $kode + 1;
+          $id_pengembalian = "PN".str_pad($kode, 3, "0", STR_PAD_LEFT).$hariini;
+        } else {
+          $id_pengembalian = "PN001".$hariini;
+        }
+
+        $tgl_pengembalian = date('Y-m-d H:i:s');
+
+        $insert = mysql_query("INSERT INTO pengembalian VALUES('$id_pengembalian',
+          '$tgl_pengembalian',
+          '$id_user',
+          '$id_sewa')")or die(mysql_error());
+
+        $sql = mysql_query("UPDATE sewa SET status_bayar = '3',
+          status_sewa = '3'
+          WHERE
+          id_sewa = '$id_sewa'")or die(mysql_error());
+        if($sql){
+         echo "<script> alert('Pengembalian Berhasil'); location.replace('kelola_penyewaan.php') </script>";
+       } 
+     }
+
+
+     if(isset($_POST['kembali'])){
+
+      $id_barang = $_POST['id_barang'];
+      $id_sewa = $_POST['id_sewa'];
+      $jumlah = $_POST['jumlah'];
+
+      $update = mysql_query("UPDATE m_barang SET stok = stok + '$jumlah' WHERE id_barang = '$id_barang'")or die(mysql_error());
+      $update_brg =  mysql_query("UPDATE detail_sewa SET status_pinjam = '0' WHERE id_sewa = '$id_sewa' AND id_barang = '$id_barang'")or die(mysql_error());
+      if($update AND $update_brg){
+        echo "<script> alert('berhasil kembalikan barang'); location.replace('pengembalian.php?id_sewa=$id_sewa') </script>";
       }
 
-      $tgl_pengembalian = date('Y-m-d H:i:s');
 
-      $insert = mysql_query("INSERT INTO pengembalian VALUES('$id_pengembalian',
-        '$tgl_pengembalian',
-        '$id_user',
-        '$id_sewa')")or die(mysql_error());
-
-      $sql = mysql_query("UPDATE sewa SET status_bayar = '3',
-        status_sewa = '3'
-        WHERE
-        id_sewa = '$id_sewa'")or die(mysql_error());
-      if($sql){
-       echo "<script> alert('Pengembalian Berhasil'); location.replace('kelola_penyewaan.php') </script>";
-     } 
-   }
-
-
-   if(isset($_POST['kembali'])){
-
-    $id_barang = $_POST['id_barang'];
-    $id_sewa = $_POST['id_sewa'];
-    $jumlah = $_POST['jumlah'];
-
-    $update = mysql_query("UPDATE m_barang SET stok = stok + '$jumlah' WHERE id_barang = '$id_barang'")or die(mysql_error());
-    $update_brg =  mysql_query("UPDATE detail_sewa SET status_pinjam = '0' WHERE id_sewa = '$id_sewa' AND id_barang = '$id_barang'")or die(mysql_error());
-    if($update AND $update_brg){
-      echo "<script> alert('berhasil kembalikan barang'); location.replace('pengembalian.php?id_sewa=$id_sewa') </script>";
     }
-
-
-  }
-  ?>
+    ?>

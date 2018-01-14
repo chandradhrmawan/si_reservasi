@@ -79,7 +79,7 @@
 											if($row['status_bayar']=='0'){
 												?>
 												<select class="span6" name="status_bayar" class="form-control" onchange="this.form.submit()">
-													<option value="0" selected >Belum Lunas</option>
+													<!-- <option value="0" selected >Belum Lunas</option> -->
 													<option value="1">Menunggu Konfirmasi</option>
 													<option value="2">Sudah Dp</option>
 													<option value="3">Lunas</option>
@@ -87,7 +87,7 @@
 												<?php }else if($row['status_bayar']=='1'){
 													?>
 													<select class="span6" name="status_bayar" class="form-control" onchange="this.form.submit()">
-														<option value="0">Belum Lunas</option>
+														<!-- <option value="0">Belum Lunas</option> -->
 														<option value="1" selected>Menunggu Konfirmasi</option>
 														<option value="2">Sudah Dp</option>
 														<option value="3">Lunas</option>
@@ -95,7 +95,7 @@
 													<?php }else if($row['status_bayar']=='2'){
 														?>
 														<select class="span6" name="status_bayar" class="form-control" onchange="this.form.submit()" disabled>
-															<option value="0">Belum Lunas</option>
+															<!-- <option value="0">Belum Lunas</option> -->
 															<option value="1">Menunggu Konfirmasi</option>
 															<option value="2" selected>Sudah Dp</option>
 															<option value="3">Lunas</option>
@@ -103,7 +103,7 @@
 														<?php }else if($row['status_bayar']=='3'){
 															?>
 															<select class="span6" name="status_bayar" class="form-control" onchange="this.form.submit()" disabled>
-																<option value="0">Belum Lunas</option>
+																<!-- <option value="0">Belum Lunas</option> -->
 																<option value="1">Menunggu Konfirmasi</option>
 																<option value="2" >Sudah Dp</option>
 																<option value="3" selected>Lunas</option>
