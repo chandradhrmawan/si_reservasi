@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 13 Jan 2018 pada 18.59
--- Versi Server: 5.6.24
+-- Generation Time: Jan 16, 2018 at 07:32 PM
+-- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `batal`
+-- Table structure for table `batal`
 --
 
 CREATE TABLE IF NOT EXISTS `batal` (
@@ -32,17 +32,10 @@ CREATE TABLE IF NOT EXISTS `batal` (
   `alasan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `batal`
---
-
-INSERT INTO `batal` (`id_batal`, `id_sewa`, `alasan`) VALUES
-(1, 'SW011130118', 'Tidak Ada Uangny BRU');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_sewa`
+-- Table structure for table `detail_sewa`
 --
 
 CREATE TABLE IF NOT EXISTS `detail_sewa` (
@@ -53,34 +46,10 @@ CREATE TABLE IF NOT EXISTS `detail_sewa` (
   `status_pinjam` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `detail_sewa`
---
-
-INSERT INTO `detail_sewa` (`id_detail`, `id_sewa`, `id_barang`, `jumlah`, `status_pinjam`) VALUES
-(1, 'SW005101217', '3', 2, '1'),
-(3, 'SW003021217', '3', 1, '0'),
-(4, 'SW003021217', '7', 2, '0'),
-(5, 'SW004021217', '1', 4, '0'),
-(16, 'SW001011217', '1', 2, '0'),
-(17, 'SW001011217', '4', 1, '1'),
-(18, 'SW002011217', '1', 1, '0'),
-(2, 'SW006151217', '3', 4, '1'),
-(3, 'SW006151217', '4', 1, '1'),
-(4, 'SW007101217', '4', 8, '0'),
-(5, 'SW007101217', '3', 2, '0'),
-(1, 'SW008030118', '1', 4, '1'),
-(2, 'SW008030118', '3', 2, '1'),
-(3, 'SW009030118', '3', 2, '0'),
-(1, 'SW010130118', '1', 2, '1'),
-(2, 'SW010130118', '2', 2, '1'),
-(1, 'SW011130118', '1', 4, '1'),
-(2, 'SW012130118', '3', 2, '0');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kecamatan`
+-- Table structure for table `kecamatan`
 --
 
 CREATE TABLE IF NOT EXISTS `kecamatan` (
@@ -91,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `kecamatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kecamatan`
+-- Dumping data for table `kecamatan`
 --
 
 INSERT INTO `kecamatan` (`id_provinsi`, `id_kota`, `id_kecamatan`, `nama_kecamatan`) VALUES
@@ -27125,7 +27094,7 @@ INSERT INTO `kecamatan` (`id_provinsi`, `id_kota`, `id_kecamatan`, `nama_kecamat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kota`
+-- Table structure for table `kota`
 --
 
 CREATE TABLE IF NOT EXISTS `kota` (
@@ -27135,7 +27104,7 @@ CREATE TABLE IF NOT EXISTS `kota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kota`
+-- Dumping data for table `kota`
 --
 
 INSERT INTO `kota` (`id_provinsi`, `id_kota`, `nama_kota`) VALUES
@@ -29132,7 +29101,7 @@ INSERT INTO `kota` (`id_provinsi`, `id_kota`, `nama_kota`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `m_admin`
+-- Table structure for table `m_admin`
 --
 
 CREATE TABLE IF NOT EXISTS `m_admin` (
@@ -29144,7 +29113,7 @@ CREATE TABLE IF NOT EXISTS `m_admin` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `m_admin`
+-- Dumping data for table `m_admin`
 --
 
 INSERT INTO `m_admin` (`id_admin`, `nama_admin`, `username`, `password`, `status`) VALUES
@@ -29154,7 +29123,7 @@ INSERT INTO `m_admin` (`id_admin`, `nama_admin`, `username`, `password`, `status
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `m_bank`
+-- Table structure for table `m_bank`
 --
 
 CREATE TABLE IF NOT EXISTS `m_bank` (
@@ -29165,7 +29134,7 @@ CREATE TABLE IF NOT EXISTS `m_bank` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `m_bank`
+-- Dumping data for table `m_bank`
 --
 
 INSERT INTO `m_bank` (`id_bank`, `nama_bank`, `atas_nama`, `no_rek`) VALUES
@@ -29176,7 +29145,7 @@ INSERT INTO `m_bank` (`id_bank`, `nama_bank`, `atas_nama`, `no_rek`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `m_barang`
+-- Table structure for table `m_barang`
 --
 
 CREATE TABLE IF NOT EXISTS `m_barang` (
@@ -29196,36 +29165,33 @@ CREATE TABLE IF NOT EXISTS `m_barang` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `m_barang`
+-- Dumping data for table `m_barang`
 --
 
 INSERT INTO `m_barang` (`id_barang`, `nama_barang`, `tgl_ditambakan`, `id_merk`, `id_kategori`, `id_warna`, `id_ukuran`, `deskripsi`, `harga_sewa`, `harga_beli`, `stok`, `status`, `foto`) VALUES
-(1, 'Tenda Dome Kap 4', '2017-12-01 15:46:05', 1, 1, 1, 1, 'Tenda Dome Kapasitas 4 Orang', 25000, '1500000', 6, 1, 'B00007.jpg'),
-(2, 'Jacket Eiger', '2017-12-01 12:55:27', 1, 3, 1, 1, 'Deskripsi Barang', 10000, '1500000', 8, 1, 'B00011.jpg'),
-(3, 'JAKET', '2017-12-01 15:06:35', 1, 1, 1, 1, 'Deskripsi Barang', 5000, '10000', 6, 1, 'B00008.jpg'),
-(4, 'KACAMATAN', '2017-12-01 15:06:45', 1, 1, 1, 1, 'Deskripsi Barang', 5000, '10000', 8, 1, 'B00024.jpg'),
-(5, '5', '2017-12-01 15:07:03', 1, 1, 1, 1, 'Deskripsi Barang', 5, '5', 10, 1, 'B00026.jpg'),
-(6, '6', '2017-12-01 15:07:16', 1, 1, 1, 1, 'Deskripsi Barang', 6, '6', 10, 1, 'B00028.jpg'),
-(7, '7', '2017-12-01 15:07:27', 1, 1, 1, 1, 'Deskripsi Barang', 7, '7', 14, 1, 'B00013.jpg'),
-(8, '8', '2017-12-01 15:07:42', 1, 1, 1, 1, 'Deskripsi Barang', 8, '8', 10, 1, 'B00018.jpg'),
-(9, '9', '2017-12-01 15:07:54', 1, 1, 1, 1, 'Deskripsi Barang', 9, '9', 10, 1, 'P007.jpg'),
-(10, '10', '2017-12-01 15:08:05', 1, 1, 1, 1, 'Deskripsi Barang', 10, '10', 10, 1, 'user8-128x128.jpg'),
-(11, '11', '2017-12-01 15:08:16', 1, 1, 1, 1, 'Deskripsi Barang', 11, '11', 10, 1, 'P006.jpg'),
-(12, '12', '2017-12-01 15:42:40', 2, 4, 2, 2, 'Deskripsi Barang', 12, '12', 12, 1, 'photo2.png');
+(1, 'Tenda Dome Kap 4', '2017-12-01 15:46:05', 1, 1, 1, 1, 'Tenda Dome Kapasitas 4 Orang', 25000, '1500000', 6, 1, 'Tenda_Dome_Camping_Bestway_Montana_Kapasitas_4_5_TERMURAH___.jpg'),
+(2, 'Jacket Eiger', '2017-12-01 12:55:27', 1, 2, 1, 1, 'Deskripsi Barang', 10000, '1500000', 6, 1, 'spyder-eigermensjacket-2017-1.jpg'),
+(3, 'Jacket Eiger Windproof', '2017-12-01 15:06:35', 1, 2, 1, 1, 'Deskripsi Barang', 5000, '10000', 6, 1, '88660_025_OSR_ELB_ACI_LG.jpg'),
+(4, 'Sleeping Bag', '2017-12-01 15:06:45', 1, 5, 1, 1, 'Deskripsi Barang', 5000, '10000', 8, 1, '53573-101116143452301331578.jpg'),
+(5, 'Mastras', '2017-12-01 15:07:03', 1, 5, 1, 1, 'Deskripsi Barang', 10000, '500000', 10, 1, 'harga-matras-gunung-dan-camping.jpg'),
+(6, 'Tenda Pleton', '2017-12-01 15:07:16', 1, 1, 1, 1, 'Deskripsi Barang', 5000000, '50000000', 10, 1, 'keisha-karya-mandiri_keisha-karya-mandiri-tenda-serbaguna---biru--2-x-2-m-_full05.jpg'),
+(7, 'Tenda Kap 7', '2017-12-01 15:07:27', 1, 1, 1, 1, 'Tenda Kap 7', 7000000, '700000000', 14, 1, 'AAB47_ZL.jpg'),
+(8, 'Celana PDL', '2017-12-01 15:07:42', 2, 6, 1, 1, 'Deskripsi Barang', 8000, '80000', 10, 1, 'Celana_PDL_Cargo_gunung_camping_touring_merk_Sioux_Shioux_mo.jpg'),
+(12, 'Celana PDL Pendek', '2017-12-01 15:42:40', 2, 6, 1, 2, 'Celana PDL Pendek', 50000, '500000', 12, 1, 'jual_celana_pdl_pendek_helicon_blackhawk_tactical_warna_tan___krem_3602616_1427709426.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `m_kategori`
+-- Table structure for table `m_kategori`
 --
 
 CREATE TABLE IF NOT EXISTS `m_kategori` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `m_kategori`
+-- Dumping data for table `m_kategori`
 --
 
 INSERT INTO `m_kategori` (`id_kategori`, `nama_kategori`) VALUES
@@ -29233,31 +29199,34 @@ INSERT INTO `m_kategori` (`id_kategori`, `nama_kategori`) VALUES
 (2, 'Jaket'),
 (3, 'Sepatu'),
 (4, 'Kompor'),
-(5, 'Peripheral');
+(5, 'Peripheral'),
+(6, 'Celana');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `m_merk`
+-- Table structure for table `m_merk`
 --
 
 CREATE TABLE IF NOT EXISTS `m_merk` (
   `id_merk` int(11) NOT NULL,
   `nama_merk` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `m_merk`
+-- Dumping data for table `m_merk`
 --
 
 INSERT INTO `m_merk` (`id_merk`, `nama_merk`) VALUES
 (1, 'Eiger'),
-(2, 'Consina');
+(2, 'Consina'),
+(3, 'TNF'),
+(4, 'Rei');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `m_ukuran`
+-- Table structure for table `m_ukuran`
 --
 
 CREATE TABLE IF NOT EXISTS `m_ukuran` (
@@ -29266,7 +29235,7 @@ CREATE TABLE IF NOT EXISTS `m_ukuran` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `m_ukuran`
+-- Dumping data for table `m_ukuran`
 --
 
 INSERT INTO `m_ukuran` (`id_ukuran`, `nama_ukuran`) VALUES
@@ -29277,7 +29246,7 @@ INSERT INTO `m_ukuran` (`id_ukuran`, `nama_ukuran`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `m_user`
+-- Table structure for table `m_user`
 --
 
 CREATE TABLE IF NOT EXISTS `m_user` (
@@ -29296,7 +29265,7 @@ CREATE TABLE IF NOT EXISTS `m_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `m_user`
+-- Dumping data for table `m_user`
 --
 
 INSERT INTO `m_user` (`id_user`, `tgl_daftar`, `nama_user`, `username`, `email`, `password`, `id_provinsi`, `id_kota`, `id_kecamatan`, `kode_pos`, `alamat_lengkap`, `status`) VALUES
@@ -29308,7 +29277,7 @@ INSERT INTO `m_user` (`id_user`, `tgl_daftar`, `nama_user`, `username`, `email`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `m_warna`
+-- Table structure for table `m_warna`
 --
 
 CREATE TABLE IF NOT EXISTS `m_warna` (
@@ -29317,7 +29286,7 @@ CREATE TABLE IF NOT EXISTS `m_warna` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `m_warna`
+-- Dumping data for table `m_warna`
 --
 
 INSERT INTO `m_warna` (`id_warna`, `nama_warna`) VALUES
@@ -29328,7 +29297,7 @@ INSERT INTO `m_warna` (`id_warna`, `nama_warna`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pembayaran_awal`
+-- Table structure for table `pembayaran_awal`
 --
 
 CREATE TABLE IF NOT EXISTS `pembayaran_awal` (
@@ -29344,26 +29313,10 @@ CREATE TABLE IF NOT EXISTS `pembayaran_awal` (
   `catatan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `pembayaran_awal`
---
-
-INSERT INTO `pembayaran_awal` (`id_pembayaran`, `id_sewa`, `tgl_pembayaran`, `id_bank`, `bank_pengirim`, `no_rek_pengirim`, `atas_nama_pengirim`, `jumlah_transfer`, `bukti_transfer`, `catatan`) VALUES
-('DP001021217', 'SW001011217', '2017-12-02 08:24:19', 1, 'BNN', '1232323', 'ASDA', 25001, 'B00004.jpg', 'AA'),
-('DP002021217', 'SW003021217', '2017-12-02 17:38:34', 1, 'BNN', '1232323', 'ASDA', 8, 'default-50x50.gif', 'aa'),
-('DP003021217', 'SW004021217', '2017-12-02 17:47:35', 2, 'BNN', '1232323', '123', 50000, 'B00027.jpg', 'SSS'),
-('DP004101217', 'SW005101217', '2017-12-10 10:20:33', 1, '123', '123', '123', 1, 'check.png', 'a'),
-('DP005101217', 'SW007101217', '2017-12-10 10:39:15', 2, '11', '11', '11', 25000, '24.jpg', '123'),
-('DP006181217', 'SW006151217', '2017-12-18 10:42:10', 2, 'aa', '123', '2323', 12500, '15.jpg', 'aaaa'),
-('DP007030118', 'SW008030118', '2018-01-03 18:15:16', 2, '123', '123', '123', 55000, '7.png', 'asdasd'),
-('DP008130118', 'SW009030118', '2018-01-13 07:10:19', 3, '123', '123123', '12312312', 5000, 'bulan.png', 'asdasd'),
-('DP009130118', 'SW011130118', '2018-01-13 16:28:56', 2, 'AA', '123123', '12312', 50000, 'venus.png', 'AAAAAA'),
-('DP010130118', 'SW012130118', '2018-01-13 16:37:18', 2, '123', '123', '123', 5000, 'uranus-transparent.png', '123123123');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengembalian`
+-- Table structure for table `pengembalian`
 --
 
 CREATE TABLE IF NOT EXISTS `pengembalian` (
@@ -29373,25 +29326,10 @@ CREATE TABLE IF NOT EXISTS `pengembalian` (
   `id_sewa` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `pengembalian`
---
-
-INSERT INTO `pengembalian` (`id_pengembalian`, `tgl_pengembalian`, `id_user`, `id_sewa`) VALUES
-('PN001021217', '2017-12-02 17:28:03', '1', 'SW002011217'),
-('PN002021217', '2017-12-02 17:41:57', '1', 'SW003021217'),
-('PN003021217', '2017-12-02 17:48:23', '1', 'SW004021217'),
-('PN004101217', '2017-12-10 10:19:23', '1', 'SW001011217'),
-('PN005151217', '2017-12-15 10:33:23', '1', 'SW005101217'),
-('PN006181217', '2017-12-18 10:41:47', '1', 'SW007101217'),
-('PN007030118', '2018-01-03 18:17:07', '1', 'SW008030118'),
-('PN008130118', '2018-01-13 07:19:37', '3', 'SW009030118'),
-('PN009130118', '2018-01-13 18:58:48', '4', 'SW012130118');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `perpanjang`
+-- Table structure for table `perpanjang`
 --
 
 CREATE TABLE IF NOT EXISTS `perpanjang` (
@@ -29401,17 +29339,10 @@ CREATE TABLE IF NOT EXISTS `perpanjang` (
   `alasan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `perpanjang`
---
-
-INSERT INTO `perpanjang` (`id_perpanjang`, `id_sewa`, `lama_perpanjang`, `alasan`) VALUES
-(1, 'SW012130118', '2', 'Mau Liburan Lagi');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `perpanjangan`
+-- Table structure for table `perpanjangan`
 --
 
 CREATE TABLE IF NOT EXISTS `perpanjangan` (
@@ -29421,17 +29352,10 @@ CREATE TABLE IF NOT EXISTS `perpanjangan` (
   `alasan_perpanjang` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `perpanjangan`
---
-
-INSERT INTO `perpanjangan` (`id_perpanjang`, `id_sewa`, `lama_perpanjang`, `alasan_perpanjang`) VALUES
-('PP001181217', 'SW006151217', '2', 'Kurang Lama Disananya');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `provinsi`
+-- Table structure for table `provinsi`
 --
 
 CREATE TABLE IF NOT EXISTS `provinsi` (
@@ -29440,7 +29364,7 @@ CREATE TABLE IF NOT EXISTS `provinsi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `provinsi`
+-- Dumping data for table `provinsi`
 --
 
 INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
@@ -29580,7 +29504,7 @@ INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sewa`
+-- Table structure for table `sewa`
 --
 
 CREATE TABLE IF NOT EXISTS `sewa` (
@@ -29595,28 +29519,10 @@ CREATE TABLE IF NOT EXISTS `sewa` (
   `dp` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `sewa`
---
-
-INSERT INTO `sewa` (`id_sewa`, `id_user`, `tgl_sewa`, `tgl_selesai`, `tgl_expired`, `status_bayar`, `status_sewa`, `total_bayar`, `dp`) VALUES
-('SW001011217', 1, '2017-12-02', '2017-12-02', '2017-12-02', 3, 3, 50002, 0),
-('SW002011217', 1, '2017-12-02', '2017-12-02', '2017-12-02', 3, 3, 1750000, 0),
-('SW003021217', 1, '2017-12-02', '2017-12-02', '2017-12-02', 3, 3, 15, 8),
-('SW004021217', 1, '2017-12-03', '2017-12-09', '2017-12-04', 3, 3, 100000, 50000),
-('SW005101217', 1, '2017-12-11', '2017-12-13', '2017-12-12', 3, 3, 2, 1),
-('SW006151217', 1, '2017-12-11', '2017-12-13', '0000-00-00', 2, 3, 25000, 12500),
-('SW007101217', 1, '2017-12-11', '2017-12-16', '2017-12-12', 3, 3, 50000, 25000),
-('SW008030118', 1, '2018-01-05', '2018-01-07', '2018-01-06', 3, 3, 110000, 55000),
-('SW009030118', 3, '0000-00-00', '0000-00-00', '0000-00-00', 3, 3, 10000, 5000),
-('SW010130118', 3, '2018-01-27', '2018-01-29', '2018-01-28', 2, 2, 70000, 0),
-('SW011130118', 4, '2018-01-14', '2018-01-16', '2018-01-15', 2, 12, 100000, 50000),
-('SW012130118', 4, '2018-01-14', '2018-01-18', '2018-01-15', 3, 3, 20000, 5000);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tmp_detail_sewa`
+-- Table structure for table `tmp_detail_sewa`
 --
 
 CREATE TABLE IF NOT EXISTS `tmp_detail_sewa` (
@@ -29625,7 +29531,7 @@ CREATE TABLE IF NOT EXISTS `tmp_detail_sewa` (
   `id_barang` varchar(255) DEFAULT NULL,
   `jumlah` int(11) DEFAULT NULL,
   `status_pinjam` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -29749,12 +29655,12 @@ ALTER TABLE `m_barang`
 -- AUTO_INCREMENT for table `m_kategori`
 --
 ALTER TABLE `m_kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `m_merk`
 --
 ALTER TABLE `m_merk`
-  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `m_ukuran`
 --
@@ -29779,7 +29685,7 @@ ALTER TABLE `perpanjang`
 -- AUTO_INCREMENT for table `tmp_detail_sewa`
 --
 ALTER TABLE `tmp_detail_sewa`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

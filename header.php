@@ -11,7 +11,7 @@ include 'config.php';
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bonfire a Ecommerce Category Flat Bootstarp Responsive Website Template | Home :: w3layouts</title>
+	<title>Everest Rent And Outdoor Shop</title>
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="js/jquery.min.js"></script>
@@ -143,7 +143,7 @@ include 'config.php';
 					<li><a href="products.php?id_kategori=4" >KOMPOR</a></li>
 					<li><a href="products.php?id_kategori=5" >PERIPHERAL</a></li>
 					<li><a href="products.php" >SEMUA</a></li>
-					<li><a href="contact.php" >Contact </a></li>
+					<li><a href="#" >Contact </a></li>
 					<?php echo  $view_login; ?>
 				</ul>
 				<script type="text/javascript" src="js/nav.js"></script>

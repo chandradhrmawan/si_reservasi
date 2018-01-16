@@ -1,6 +1,6 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
-    <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+    <li class="active"><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
     <li> <a href="kelola_penyewaan.php"><i class="icon icon-retweet"></i> <span>Penyewaan</span></a> </li>
     <li> <a href="kelola_pembatalan.php"><i class="icon icon-check"></i> <span>Pembatalan</span></a> </li>
      <li> <a href="kelola_perpanjangan.php"><i class="icon icon-edit"></i> <span>Perpanjangan</span></a> </li>
@@ -16,6 +16,7 @@
         <li><a href="kelola_ukuran.php">Kelola Ukuran</a></li>
       </ul>
     </li>
+     <li> <a href="laporan.php"><i class="icon icon-edit"></i> <span>Laporan Penyewaan</span></a> </li>
     <li> <a href="logout.php"><i class="icon icon-share-alt"></i> <span>Logout</span></a> </li>
   </ul>
 </div>
