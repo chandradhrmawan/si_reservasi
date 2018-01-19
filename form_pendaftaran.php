@@ -59,7 +59,7 @@
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label>Provinsi</label>
 					<select name="id_provinsi" id="propinsi" class="form-control">
 						<option>Pilih Provinsi</option>
@@ -71,23 +71,23 @@
 						</option>
 						<?php } ?>
 					</select>
-				</div>
-				<div class="form-group">
+				</div> -->
+				<!-- <div class="form-group">
 					<label>Kota</label>
 					<select name="id_kota" id="kota" required class="form-control">
 						<option value="#">
-							--Pilih Kota/Kabupaten--
+							Pilih Kota/Kabupaten
 						</option>
 					</select>
-				</div>
-				<div class="form-group">
+				</div> -->
+				<!-- <div class="form-group">
 					<label>Kecamatan</label>
 					<select name="id_kecamatan" id="kec" required class="form-control">
 						<option value="#">
-							--Pilih Kecamatan--
+							Pilih Kecamatan
 						</option>
 					</select>
-				</div>
+				</div> -->
 				<div class="form-group">
 					<label>Kode Pos</label>
 					<input type="number" name="kode_pos" class="form-control">
@@ -125,9 +125,9 @@
 				echo "<script> alert('Password Tidak Sama'); location.replace('form_pendaftaran.php') </script>";
 			}
 
-			$id_provinsi = $_POST['id_provinsi'];
-			$id_kota = $_POST['id_kota'];
-			$id_kecamatan = $_POST['id_kecamatan'];
+			$id_provinsi = null;
+			$id_kota = null;
+			$id_kecamatan = null;
 			$kode_pos = $_POST['kode_pos'];
 			$alamat_lengkap = $_POST['alamat_lengkap'];
 			$status = '1';
@@ -135,7 +135,7 @@
 			$insert = mysql_query("INSERT INTO m_user VALUES('$id_user','$tgl_daftar','$nama_user','$username','$email',
 								   '$password1','$id_provinsi','$id_kota','$id_kecamatan','$kode_pos','$alamat_lengkap','$status')")or die(mysql_error());
 			if($insert){
-				echo "<script> alert('Berhasil Daftar Akun Silahkan Login..'); location.replace('form_pendaftaran.php') </script>";	
+				echo "<script> alert('Berhasil Daftar Akun Silahkan Login..'); location.replace('login.php') </script>";	
 			}else{
 				echo "<script> alert('Gagal Daftar Akun'); location.replace('form_pendaftaran.php') </script>";
 			}

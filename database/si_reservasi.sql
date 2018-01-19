@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2018 at 07:32 PM
+-- Generation Time: Jan 19, 2018 at 08:52 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -32,6 +32,13 @@ CREATE TABLE IF NOT EXISTS `batal` (
   `alasan` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `batal`
+--
+
+INSERT INTO `batal` (`id_batal`, `id_sewa`, `alasan`) VALUES
+(1, 'SW001170118', 'coba ya');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +52,18 @@ CREATE TABLE IF NOT EXISTS `detail_sewa` (
   `jumlah` int(11) DEFAULT NULL,
   `status_pinjam` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detail_sewa`
+--
+
+INSERT INTO `detail_sewa` (`id_detail`, `id_sewa`, `id_barang`, `jumlah`, `status_pinjam`) VALUES
+(1, 'SW001170118', '1', 1, '0'),
+(2, 'SW001170118', '3', 1, '0'),
+(3, 'SW002170118', '7', 2, '0'),
+(4, 'SW003190118', '1', 1, '0'),
+(5, 'SW003190118', '2', 2, '0'),
+(6, 'SW003190118', '3', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -29117,7 +29136,7 @@ CREATE TABLE IF NOT EXISTS `m_admin` (
 --
 
 INSERT INTO `m_admin` (`id_admin`, `nama_admin`, `username`, `password`, `status`) VALUES
-(3, 'admin test', 'adminadmin', 'tes', 1),
+(3, 'penyewaan', 'penyewaan', 'penyewaan', 1),
 (5, 'admin', 'admin', 'admin', 1);
 
 -- --------------------------------------------------------
@@ -29262,7 +29281,7 @@ CREATE TABLE IF NOT EXISTS `m_user` (
   `kode_pos` varchar(255) DEFAULT NULL,
   `alamat_lengkap` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `m_user`
@@ -29272,7 +29291,8 @@ INSERT INTO `m_user` (`id_user`, `tgl_daftar`, `nama_user`, `username`, `email`,
 (1, '2018-01-04 00:20:07', 'rony', 'user', 'rifaldi@gmail.com', 'user', '13', '1301', '1301013', '14320', 'Jakarta Utara ', '1'),
 (2, '2017-11-27 16:20:24', '123', 'asdasd', '123@asd.123', '123', '12', '1219', '1219040', '123', '123. ', '1'),
 (3, '2018-01-03 18:23:58', 'rony', 'rony', 'rony@gmail.com', 'rony', '11', '1107', '1107050', '123', ' 123', '1'),
-(4, '2018-01-13 15:58:19', 'dede', 'dede', 'dede@dede.dede', 'dede', '12', '1210', '1210061', '123123', ' dede', '1');
+(4, '2018-01-13 15:58:19', 'dede', 'dede', 'dede@dede.dede', 'dede', '12', '1210', '1210061', '123123', ' dede', '1'),
+(5, '2018-01-17 19:41:57', 'chandra', 'chand3', 'chandradarmawan17@gmail.com', '671164796', '', '', '', '14320', 'pelindo 2 ', '1');
 
 -- --------------------------------------------------------
 
@@ -29313,6 +29333,15 @@ CREATE TABLE IF NOT EXISTS `pembayaran_awal` (
   `catatan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pembayaran_awal`
+--
+
+INSERT INTO `pembayaran_awal` (`id_pembayaran`, `id_sewa`, `tgl_pembayaran`, `id_bank`, `bank_pengirim`, `no_rek_pengirim`, `atas_nama_pengirim`, `jumlah_transfer`, `bukti_transfer`, `catatan`) VALUES
+('DP001170118', 'SW002170118', '2018-01-17 19:45:27', 2, '123', '123', '123', 7000000, 'saturnus.png', 'Cepet Y'),
+('DP002190118', 'SW001170118', '2018-01-19 20:19:30', 2, '123', '123', '123', 15000, 'Capture.JPG', '123123'),
+('DP003190118', 'SW003190118', '2018-01-19 20:32:41', 1, 'bca', '7845646', 'chdn3', 25000, '11_main.png', 'asd');
+
 -- --------------------------------------------------------
 
 --
@@ -29326,6 +29355,14 @@ CREATE TABLE IF NOT EXISTS `pengembalian` (
   `id_sewa` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pengembalian`
+--
+
+INSERT INTO `pengembalian` (`id_pengembalian`, `tgl_pengembalian`, `id_user`, `id_sewa`) VALUES
+('PN001190118', '2018-01-19 20:01:58', '5', 'SW002170118'),
+('PN002190118', '2018-01-19 20:34:10', '5', 'SW003190118');
+
 -- --------------------------------------------------------
 
 --
@@ -29337,7 +29374,7 @@ CREATE TABLE IF NOT EXISTS `perpanjang` (
   `id_sewa` varchar(255) DEFAULT NULL,
   `lama_perpanjang` varchar(255) DEFAULT NULL,
   `alasan` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -29519,6 +29556,15 @@ CREATE TABLE IF NOT EXISTS `sewa` (
   `dp` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `sewa`
+--
+
+INSERT INTO `sewa` (`id_sewa`, `id_user`, `tgl_sewa`, `tgl_selesai`, `tgl_expired`, `status_bayar`, `status_sewa`, `total_bayar`, `dp`) VALUES
+('SW001170118', 5, '0000-00-00', '0000-00-00', '0000-00-00', 2, 12, 30000, 15000),
+('SW002170118', 5, '2018-01-18', '2018-01-20', '2018-01-19', 3, 3, 14000000, 7000000),
+('SW003190118', 5, '2018-01-21', '2018-01-23', '2018-01-22', 3, 3, 50000, 25000);
+
 -- --------------------------------------------------------
 
 --
@@ -29531,7 +29577,7 @@ CREATE TABLE IF NOT EXISTS `tmp_detail_sewa` (
   `id_barang` varchar(255) DEFAULT NULL,
   `jumlah` int(11) DEFAULT NULL,
   `status_pinjam` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -29670,7 +29716,7 @@ ALTER TABLE `m_ukuran`
 -- AUTO_INCREMENT for table `m_user`
 --
 ALTER TABLE `m_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `m_warna`
 --
@@ -29680,12 +29726,12 @@ ALTER TABLE `m_warna`
 -- AUTO_INCREMENT for table `perpanjang`
 --
 ALTER TABLE `perpanjang`
-  MODIFY `id_perpanjang` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_perpanjang` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tmp_detail_sewa`
 --
 ALTER TABLE `tmp_detail_sewa`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

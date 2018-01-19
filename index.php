@@ -8,12 +8,12 @@
 				<ul class="rslides" id="slider1">
 					<li><img src="images/banner.jpg" alt="">
 					</li>
-					<li><img src="images/banner1.jpg" alt="">
+					<!-- <li><img src="images/banner1.jpg" alt="">
 					</li>
 					<li><img src="images/banner.jpg" alt="">
 					</li>
 					<li><img src="images/banner2.jpg" alt="">
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<div class="banner-bottom">

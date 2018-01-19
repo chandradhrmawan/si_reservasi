@@ -226,7 +226,7 @@ if($count==0){
 				$dp = $_POST['dp'];
 
 				if(empty($_POST['tgl_expired'])){
-					echo "<script> alert('Silahkan Lengkap Data Terlebih Dahulu Sebelum Check'); location.replace('checkout.php') </script>";
+					die("<script> alert('Silahkan Lengkap Data Terlebih Dahulu Sebelum Check'); location.replace('checkout.php') </script>");
 				}
 
 				//die();

@@ -41,18 +41,34 @@ $row = mysql_fetch_array($sql);
 					</div>
 				</form>	
 				<?php
-					if(isset($_POST['proses'])){
-						$id_sewa = $_POST['id_sewa'];
-						$alasan = $_POST['alasan'];
+				if(isset($_POST['proses'])){
+					$id_sewa = $_POST['id_sewa'];
+					$alasan = $_POST['alasan'];
 
-						if(empty($alasan)){
-							echo "<script> alert('Mohon Isikan Alasan Terlebih Dahulu'); </script>";
-						}else{
-							$insert = mysql_query("INSERT into batal VALUES('','$id_sewa','$alasan')")or die(mysql_error());
-							$update = mysql_query("UPDATE sewa SET status_sewa = '7' WHERE id_sewa = '$id_sewa'");
-							echo "<script> alert('Proses Pengajuan Pembatalan Berhasil'); location.replace('pembatalan.php') </script>";
-						}
+					if(empty($alasan)){
+						die("<script> alert('Mohon Isikan Alasan Terlebih Dahulu'); </script>");
 					}
+
+					$sql_detail = mysql_query("SELECT * FROM detail_sewa WHERE id_sewa = '$id_sewa'")or die(mysql_error());
+					$jml_id_sewa = mysql_num_rows($sql_detail);
+
+					while ($row = mysql_fetch_array($sql_detail)) {
+						$id_barang = $row['id_barang'];
+						$stok = $row['jumlah'];
+						$update_barang = mysql_query("UPDATE m_barang SET stok = stok + '$stok'
+							WHERE id_barang = '$id_barang'")or die(mysql_error());
+						$update_detail_sewa = mysql_query("UPDATE detail_sewa SET status_pinjam = '0'
+							WHERE id_barang = '$id_barang'")or die(mysql_error());
+					}
+
+					if(empty($alasan)){
+						echo "<script> alert('Mohon Isikan Alasan Terlebih Dahulu'); </script>";
+					}else{
+						$insert = mysql_query("INSERT into batal VALUES('','$id_sewa','$alasan')")or die(mysql_error());
+						$update = mysql_query("UPDATE sewa SET status_sewa = '7' WHERE id_sewa = '$id_sewa'");
+						echo "<script> alert('Proses Pengajuan Pembatalan Berhasil'); location.replace('pembatalan.php') </script>";
+					}
+				}
 				?>
 			</div>
 		</div>

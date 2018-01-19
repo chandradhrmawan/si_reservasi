@@ -137,9 +137,9 @@ if ($datakode) {
 </form>
 <?php 
 if(isset($_POST['submit'])){
-    echo "<pre>";
+    /*echo "<pre>";
     print_r($_POST);
-    print_r($_FILES);
+    print_r($_FILES);*/
 
     $target_dir = "images/";
 
