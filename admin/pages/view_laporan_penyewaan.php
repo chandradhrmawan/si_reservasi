@@ -24,8 +24,10 @@ if(!isset($_SESSION['id_admin'])){
 <?php
 $dari = $_POST['dari'];
 $sampai = $_POST['sampai'];
-$sql = mysql_query("SELECT * FROM sewa,m_user 
+$sql = mysql_query("SELECT * FROM 
+  sewa,m_user,pengembalian
   WHERE sewa.id_user = m_user.id_user
+  AND   pengembalian.id_sewa = sewa.id_sewa
   AND sewa.tgl_sewa 
   BETWEEN '$dari' AND '$sampai'")or die(mysql_error());
 
@@ -55,14 +57,14 @@ $sql = mysql_query("SELECT * FROM sewa,m_user
  <table class="table" align="center" border="1">
    <thead>
     <tr>
-      <th colspan="9" align="left">
+      <th colspan="10" align="left">
         <h5 align="center"> Laporan Data Penyewaan Periode <?php echo $dari; ?> s/d <?php echo $sampai; ?></h5>
       </th>
     </tr>
   </thead>
   <thead>
     <tr>
-      <th colspan="9" align="center">
+      <th colspan="10" align="center">
       </th>
     </tr>
   </thead>
@@ -72,8 +74,11 @@ $sql = mysql_query("SELECT * FROM sewa,m_user
       <th style="background-color: gray  !important; border-color: white !important;">Id Sewa</th>
       <th style="background-color: gray  !important; border-color: white !important;">Tgl Sewa</th>
       <th style="background-color: gray  !important; border-color: white !important;">Tgl Selesai</th>
+      <th style="background-color: gray  !important; border-color: white !important;">Tgl Kembali</th>
+      <th style="background-color: gray  !important; border-color: white !important;">Lama Telat</th>
       <th style="background-color: gray  !important; border-color: white !important;">Status Bayar</th>
       <th style="background-color: gray  !important; border-color: white !important;">Status Sewa</th>
+      <th style="background-color: gray  !important; border-color: white !important;">Jumlah Dp</th>
       <th style="background-color: gray  !important; border-color: white !important;">Total Bayar</th>
     </tr>
   </thead>
@@ -82,6 +87,7 @@ $sql = mysql_query("SELECT * FROM sewa,m_user
     <?php
     $no=0;
     $total_bayar = 0;
+    $total_dp = 0;
     while($row = mysql_fetch_array($sql)){
       if($row['status_bayar']==0){
         $status_bayar = ' Belum Lunas ';
@@ -124,28 +130,48 @@ $sql = mysql_query("SELECT * FROM sewa,m_user
         $status_sewa = ' Penyewaan Dibatalkan';
       }
       ?>
+      <?php
+      $date_now=date_create($row['tgl_pengembalian']);
+      $tanggal_selesai=date_create($row['tgl_selesai']);
+      $diff=date_diff($date_now,$tanggal_selesai);
+      $lama_telat_temp = $diff->format('%R%a');
+      $lama_telat_mark = substr($lama_telat_temp,0,1);
+      $lama_telat_day = substr($lama_telat_temp,1,2);
+
+      if($lama_telat_mark == '+'){
+        $lama_telat = 0;
+      }else{
+        $lama_telat = $lama_telat_day;
+      }
+
+      ?>
       <tr>
         <td><?php echo $no; ?></td>
         <td><?php echo $row['id_sewa']; ?></td>
         <td><?php echo date('d/m/Y',strtotime($row['tgl_sewa'])); ?></td>
         <td><?php echo date('d/m/Y',strtotime($row['tgl_selesai'])); ?></td>
+        <td><?php echo date('d/m/Y',strtotime($row['tgl_pengembalian'])); ?></td>
+        <td><?php echo $lama_telat." Hari"; ?></td>
         <td><?php echo $status_bayar; ?></td>
         <td><?php echo $status_sewa; ?></td>
+        <td>Rp. <?php echo number_format($row['dp']); ?></td>
         <td>Rp. <?php echo number_format($row['total_bayar']); ?></td>
       </tr>
       <?php $no++; 
       $total_bayar = $total_bayar + $row['total_bayar'];
+      $total_dp = $total_dp + $row['dp'];
     } ?>
   </tbody>
   <tr>
-    <td colspan="6" style="background-color: gray  !important; border-color: white !important;">Total Bayar</td>
+    <td colspan="8" style="background-color: gray  !important; border-color: white !important;">Total</td>
+    <td style="background-color: gray  !important; border-color: white !important;">Rp. <?php echo number_format($total_dp) ?></td>
     <td style="background-color: gray  !important; border-color: white !important;">Rp. <?php echo number_format($total_bayar) ?></td>
   </tr>
 
   <tr>
 
 
-    <td colspan="9" align="center">
+    <td colspan="10" align="center">
 
       <script>
 
