@@ -1,0 +1,6 @@
+1. buat database select2
+2. import select2.sql kedalam database select2
+3. sesuaikan username password pada koneksi.php
+4. jalankan index.php
+
+please like fanspage harviacode ya.. thanks

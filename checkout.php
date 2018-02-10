@@ -138,6 +138,7 @@ if($count==0){
 			<td colspan="2"><?php echo @date('d-m-Y',strtotime($tgl_selesai)); ?></td>
 		</tr>
 		<tr>
+			<?php @$total_akhir =  @$total*@$durasi_sewa; ?>
 			<td colspan="4">Total Bayar</td>
 			<td colspan="2">Rp. <?php echo number_format(@$total*@$durasi_sewa); ?></td>
 		</tr>
@@ -203,7 +204,7 @@ if($count==0){
 		<input type="hidden" name="tgl_selesai" value="<?php echo @$tgl_selesai; ?>">
 		<input type="hidden" name="status_bayar" value="<?php echo '0'; ?>">
 		<input type="hidden" name="status_sewa" value="<?php echo '0'; ?>">
-		<input type="hidden" name="total_bayar" value="<?php echo @$total; ?>">
+		<input type="hidden" name="total_bayar" value="<?php echo @$total_akhir; ?>">
 		<input type="hidden" name="dp" value="<?php echo '0'; ?>">
 			<button class="btn btn-warning" type="submit" name="checkout"> <i class="fa fa-money"> Checkout </i></button>
 			<a href="products.php"><button type="button" class="btn btn-success"> <i class="fa fa-shopping-cart"> Lanjutkan Belanja</i></button></a>
